@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using HotChocolate.Resolvers;
 using StarWars.Data;
 using StarWars.Models;
@@ -24,6 +25,11 @@ namespace StarWars
         public ICharacter GetHero(Episode episode)
         {
             return _repository.GetHero(episode);
+        }
+
+        public IQueryable<ICharacter> GetHeroes()
+        {
+            return _repository.GetHeros();
         }
 
         /// <summary>

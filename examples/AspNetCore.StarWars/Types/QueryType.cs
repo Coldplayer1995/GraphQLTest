@@ -1,4 +1,4 @@
-﻿using HotChocolate.Types;
+using HotChocolate.Types;
 using StarWars.Models;
 
 #if ASPNETCLASSIC
@@ -14,6 +14,10 @@ namespace StarWars.Types
     {
         protected override void Configure(IObjectTypeDescriptor<Query> descriptor)
         {
+            descriptor.Field(t => t.GetHeroes())
+                .Type<ListType<CharacterType>>()
+                .UseFiltering();
+
             descriptor.Field(t => t.GetHero(default))
                 .Type<CharacterType>()
                 .Argument("episode", a => a.DefaultValue(Episode.NewHope));

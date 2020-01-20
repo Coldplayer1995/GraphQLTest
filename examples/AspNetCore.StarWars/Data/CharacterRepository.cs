@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using StarWars.Models;
@@ -23,6 +23,11 @@ namespace StarWars.Data
                 return _characters["1000"];
             }
             return _characters["2001"];
+        }
+
+        public IQueryable<ICharacter> GetHeros()
+        {
+            return _characters.Values.AsQueryable();
         }
 
         public ICharacter GetCharacter(string id)
